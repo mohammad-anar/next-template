@@ -1,20 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import shieldImage from "@/assets/herosection/sheildWithRating.png";
 import AppButton from "@/components/ui/MyButton/AppButton";
 import Image from "next/image";
 import HeroSearchForm from "./HeroSearchForm";
 
-const HeroSection = () => {
+const HeroSection = ({ localData }: any) => {
   return (
     <div className="bg-primary text-white py-20 min-h-[60vh]">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-3 py-10 pt-28">
         {/* left  */}
         <div className="lg:col-span-2">
           <h1 className="text-white text-[64px] font-bold max-w-4xl">
-            Committed to your health & life long care
+            {localData.hero_section.title}
           </h1>
           <p className="mt-7 max-w-2xl leading-normal">
-            We are committed to providing you with the best medical and
-            healthcare services to help you live healthier and happier.
+            {localData.hero_section.description}
           </p>
           {/* search form  */}
           <HeroSearchForm />

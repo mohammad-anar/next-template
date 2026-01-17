@@ -6,12 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaUserCircle } from "react-icons/fa";
 import NavMenu from "./NavMenu";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { getLocaleFromPath } from "@/utils/getLocalFromPath";
+import { usePathname } from "next/navigation";
 
 const ForPc = () => {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
   return (
     <div className="bg-primary">
       <div className="container hidden lg:flex py-3 items-center justify-between ">
-        <Link href={"/"}>
+        <Link href={`/${locale}`}>
           <div className="flex items-center gap-2 h-full -ml-4 w-48">
             <Image
               src={logo}
@@ -36,6 +41,7 @@ const ForPc = () => {
               Signin
             </Button>
           </Link>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

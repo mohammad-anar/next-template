@@ -23,13 +23,16 @@ export const metadata: Metadata = {
     "Award Winning Service Allied Restoration Contractors, Repairs & Replacement",
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return [{ lang: "en-US" }, { lang: "nl" }, { lang: "de" }];
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params,
+}: LayoutProps<"/[lang]">) {
   return (
-    <html lang="en">
+    <html lang={(await params).lang}>
       <head></head>
       <body
         suppressHydrationWarning={true}
